@@ -1,0 +1,14 @@
+.underline {
+	position: relative;
+	text-align: center;
+}
+
+.underline::after {
+	position: absolute;
+	width: 40%;
+	height: 2px;
+	bottom: -10%;
+	right: 30%;
+	background-color: var(--pink);
+	content: "";
+}
