@@ -1,6 +1,9 @@
 import axios from "axios"
 import { ADD_TO_CART, REMOVE_FROM_CART } from "../constants/CartConstant"
 
+if (process.env.NODE_ENV !== "production")
+    axios.defaults.baseURL = "http://localhost:5000"
+
 export const addToCart = (qty, id) => async (dispatch, getState) => {
     const {
         data: { product },
