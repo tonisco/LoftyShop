@@ -1,26 +1,38 @@
 version: "3.1"
 
 services:
-  mongo:
-    container_name: mongo
-    image: mongo
-    restart: always
-    environment:
-      - MONGO_INITDB_DATABASE:shop
-      - MONGO_INITDB_ROOT_USERNAME:root
-      - MONGO_INITDB_ROOT_PASSWORD:password
-    ports:
-      - 27017:27017
+    mongo:
+        container_name: mongo
+        image: mongo
+        restart: always
+        environment:
+            - MONGO_INITDB_DATABASE:shop
+            - MONGO_INITDB_ROOT_USERNAME:root
+            - MONGO_INITDB_ROOT_PASSWORD:password
+        ports:
+            - 27017:27017
 
-  mongo-express:
-    container_name: mongo-express
-    image: mongo-express
-    restart: always
-    ports:
-      - 8081:8081
-    environment:
-      - ME_CONFIG_MONGODB_ADMINPASSWORD:password
-      - ME_CONFIG_MONGODB_ADMINUSERNAME:root
-      - ME_CONFIG_MONGODB_URL:mongodb://root:password@mongo:27017/
-    depends_on:
-      - mongo
+    mongo-express:
+        container_name: mongo-express
+        image: mongo-express
+        restart: always
+        ports:
+            - 8081:8081
+        environment:
+            - ME_CONFIG_MONGODB_ADMINPASSWORD:password
+            - ME_CONFIG_MONGODB_ADMINUSERNAME:root
+            - ME_CONFIG_MONGODB_URL:mongodb://root:password@mongo:27017/
+        depends_on:
+            - mongo
+
+    api:
+        container_name: api
+        image: api
+        restart: always
+        ports:
+            - 5000:5000
+        environment:
+            - JWT_SECRET=loftysecret
+            - DB_CONNECTION=mongodb://mongo:27017/shop
+        depends_on:
+            - mongo
