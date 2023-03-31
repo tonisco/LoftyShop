@@ -10,10 +10,10 @@ COPY ./pnpm-lock.yaml ./pnpm-lock.yaml
 
 COPY ./src ./src
 
-COPY ./uploads ./uploads
+COPY ./public ./public
 
 RUN pnpm install
 
-EXPOSE 5000
+EXPOSE 3000
 
 CMD [ "pnpm", "start" ]

@@ -38,13 +38,13 @@ const __dirname = path.resolve()
 
 app.use("/uploads", express.static(path.join(__dirname, "/uploads")))
 
-if (process.env.NODE_ENV === "production") {
-    app.use(express.static(path.join(__dirname, "/frontend/build")))
+// if (process.env.NODE_ENV === "production") {
+//     app.use(express.static(path.join(__dirname, "/frontend/build")))
 
-    app.get("*", (req, res) =>
-        res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"))
-    )
-}
+//     app.get("*", (req, res) =>
+//         res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"))
+//     )
+// }
 
 const notFound = (req, res, next) => {
     const error = new Error(`Not Found - ${req.originalUrl}`)
@@ -65,35 +65,5 @@ app.use(notFound)
 app.use(errorHandler)
 
 const port = process.env.PORT || 5000
-
-// app.get("/", async (req, res) => {
-// 	const newVendor = await Vendor.create({
-// 		name1: "john1",
-// 		email1: "tonyxnhs1",
-// 		password1: "fngmd1",
-// 	})
-
-// 	const newUser = await User.create({
-// 		name: "john",
-// 		email: "tonyxnhs",
-// 		password: "fngmd",
-// 		isVendor: true,
-// 		vendorId: newVendor._id,
-// 	})
-
-// 	if (newUser && newVendor) {
-// 		res.status(200).json({ message: "done" })
-// 	} else {
-// 		throw new Error("Failed to register user")
-// 	}
-// })
-
-// app.get("/user", async (req, res) => {
-// 	let person = await User.findOne({ email: "tonyxnhs" })
-// 	if (person.isVendor) {
-// 		person = await person.populate("vendorId").execPopulate()
-// 	}
-// 	res.json(person)
-// })
 
 app.listen(port, console.log(`app is listening on ${port}`))
