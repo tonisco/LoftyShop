@@ -26,9 +26,9 @@ services:
         depends_on:
             - mongo
 
-    api:
-        container_name: api
-        image: api
+    app:
+        container_name: shop
+        image: shop
         restart: always
         ports:
             - 5000:5000
@@ -37,11 +37,23 @@ services:
             - DB_CONNECTION=mongodb://mongo:27017/shop
         depends_on:
             - mongo
-    app:
-        container_name: app
-        image: app
-        restart: always
-        ports:
-            - 3000:3000
-        depends_on:
-            - api
+
+    # api:
+    #     container_name: api
+    #     image: api
+    #     restart: always
+    #     ports:
+    #         - 5000:5000
+    #     environment:
+    #         - JWT_SECRET=loftysecret
+    #         - DB_CONNECTION=mongodb://mongo:27017/shop
+    #     depends_on:
+    #         - mongo
+    # app:
+    #     container_name: app
+    #     image: app
+    #     restart: always
+    #     ports:
+    #         - 3000:3000
+    #     depends_on:
+    #         - api
