@@ -19,8 +19,8 @@ jobs:
         runs-on: ubuntu-latest
 
         steps:
+            - uses: actions/checkout@v3
             - name: Checkout
-              uses: actions/checkout@v3
               run: docker-compose build --no-cache --force-rm
 
         push_to_registry:
