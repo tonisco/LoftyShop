@@ -55,12 +55,10 @@ jobs:
                   tags: ${{ secrets.DOCKERHUB_USERNAME }}/shop:${{steps.version.outputs.newTag}}
                   labels: ${{ secrets.DOCKERHUB_USERNAME }}/shop:${{steps.version.outputs.newTag}}
 
-            - name: Wait for Render Deployment
-              uses: bounceapp/render-action@0.6.0
+            - name: Deploy to render
+              uses: fjogeleit/http-request-action@v1
               with:
-                  render-token: ${{ secrets.RENDER_TOKEN }}
-                  github-token: ${{ secrets.TOKEN_GITHUB }}
-                  service-id: srv-cglvsk87oslael5uvb2g
-                  retries: 20
-                  wait: 16000
-                  sleep: 30000
+                  url: https://api.render.com/v1/services/${{secrets.RENDER_SERVICE_ID}}/deploys
+                  method: "POST"
+                  data: '{"clearCache": "do_not_clear"}'
+                  customHeaders: '{"Content-Type": "application/json","accept": "application/json", "authorization": "Bearer ${{secrets.RENDER_TOKEN}}"}'
