@@ -26,6 +26,7 @@ jobs:
 
             - name: "Automated Version Bump"
               uses: "phips28/gh-action-bump-version@master"
+              id: version
               env:
                   GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
                   PACKAGEJSON_DIR: "backend"
@@ -54,5 +55,5 @@ jobs:
               with:
                   context: .
                   push: true
-                  tags: ${{ steps.meta.outputs.tags }}
-                  labels: ${{ steps.meta.outputs.labels }}
+                  tags: user/app:${{steps.version.outputs.newTag}}
+                  labels: user/app:${{steps.version.outputs.newTag}}
