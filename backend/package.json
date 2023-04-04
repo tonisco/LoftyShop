@@ -1,6 +1,6 @@
 {
     "name": "first_project_redo",
-    "version": "1.0.6",
+    "version": "1.0.7",
     "description": "First react project",
     "main": "server.js",
     "type": "module",
