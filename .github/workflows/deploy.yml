@@ -52,8 +52,8 @@ jobs:
               with:
                   context: .
                   push: true
-                  tags: name/app:${{steps.version.outputs.newTag}}
-                  labels: name/app:${{steps.version.outputs.newTag}}
+                  tags: ${{ secrets.DOCKERHUB_USERNAME }}/shop:${{steps.version.outputs.newTag}}
+                  labels: ${{ secrets.DOCKERHUB_USERNAME }}/shop:${{steps.version.outputs.newTag}}
 
             - name: Wait for Render Deployment
               uses: bounceapp/render-action@0.6.0
