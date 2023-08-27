@@ -1,7 +1,7 @@
 import express from "express"
 import dotenv from "dotenv"
 import path from "path"
-import morgan from "morgan"
+// import morgan from "morgan"
 import db from "./db/config.js"
 import cors from "cors"
 import productRouter from "./routes/productRoute.js"
@@ -18,7 +18,7 @@ db()
 
 app.use(cors())
 app.use(express.json())
-if (process.env.NODE_ENV !== "production") app.use(morgan("combined"))
+// if (process.env.NODE_ENV !== "production") app.use(morgan("combined"))
 
 app.use("/api/product", productRouter)
 app.use("/api/user", userRouter)
@@ -38,13 +38,13 @@ const __dirname = path.resolve()
 
 app.use("/uploads", express.static(path.join(__dirname, "/uploads")))
 
-if (process.env.NODE_ENV === "production") {
-    app.use(express.static(path.join(__dirname, "/frontend/build")))
+// if (process.env.NODE_ENV === "production") {
+//     app.use(express.static(path.join(__dirname, "/frontend/build")))
 
-    app.get("*", (req, res) =>
-        res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"))
-    )
-}
+//     app.get("*", (req, res) =>
+//         res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"))
+//     )
+// }
 
 const notFound = (req, res, next) => {
     const error = new Error(`Not Found - ${req.originalUrl}`)

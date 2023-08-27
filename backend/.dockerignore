@@ -1,7 +1,6 @@
-Dockerfile
+/.git
+/node_modules
 .dockerignore
-node_modules
-npm-debug.log
-README.md
-.git
-yarn-error.log
+.env
+Dockerfile
+fly.toml
