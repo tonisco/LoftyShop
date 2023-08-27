@@ -6,8 +6,7 @@ import {
 import axios from "axios"
 import { USER_LOGIN_SUCCESS } from "../constants/userConstants"
 
-if (process.env.NODE_ENV !== "production")
-    axios.defaults.baseURL = "http://localhost:5000"
+axios.defaults.baseURL = process.env.API_URL
 
 export const vendorRegister = (contactInfo) => async (dispatch, getState) => {
     try {

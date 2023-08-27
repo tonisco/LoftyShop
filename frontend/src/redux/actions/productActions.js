@@ -39,8 +39,7 @@ import {
 } from "../constants/productConstant"
 import { userLogout } from "./userActions"
 
-if (process.env.NODE_ENV !== "production")
-    axios.defaults.baseURL = "http://localhost:5000"
+axios.defaults.baseURL = process.env.API_URL
 
 export const homeFeaturedItems = () => async (dispatch) => {
     try {

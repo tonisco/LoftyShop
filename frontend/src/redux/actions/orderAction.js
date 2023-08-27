@@ -19,8 +19,7 @@ import { userLogout } from "./userActions"
 import { CLEAR_CART } from "../constants/CartConstant"
 import { GET_ALL_PRODUCTS_FAIL } from "../constants/productConstant"
 
-if (process.env.NODE_ENV !== "production")
-    axios.defaults.baseURL = "http://localhost:5000"
+axios.defaults.baseURL = process.env.API_URL
 
 export const saveShippingDetails = (details) => (dispatch) => {
     dispatch({ type: SAVE_SHIPPING_DETAILS, payload: details })

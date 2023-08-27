@@ -33,8 +33,7 @@ import {
     GET_ALL_ORDERS_CLEAR,
 } from "../constants/orderConstants"
 
-if (process.env.NODE_ENV !== "production")
-    axios.defaults.baseURL = "http://localhost:5000"
+axios.defaults.baseURL = process.env.API_URL
 
 export const userLogin = (email, password) => async (dispatch) => {
     try {
