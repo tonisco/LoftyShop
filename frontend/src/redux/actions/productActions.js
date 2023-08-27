@@ -41,8 +41,6 @@ import { userLogout } from "./userActions"
 
 axios.defaults.baseURL = process.env.REACT_APP_API_URL
 
-console.log(process.env.REACT_APP_API_URL)
-
 export const homeFeaturedItems = () => async (dispatch) => {
     try {
         dispatch({ type: HOME_FEATURED_PRODUCT_REQUEST })
