@@ -33,7 +33,7 @@ import {
     GET_ALL_ORDERS_CLEAR,
 } from "../constants/orderConstants"
 
-axios.defaults.baseURL = process.env.API_URL
+axios.defaults.baseURL = process.env.REACT_APP_API_URL
 
 export const userLogin = (email, password) => async (dispatch) => {
     try {

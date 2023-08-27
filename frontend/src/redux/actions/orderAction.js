@@ -19,7 +19,7 @@ import { userLogout } from "./userActions"
 import { CLEAR_CART } from "../constants/CartConstant"
 import { GET_ALL_PRODUCTS_FAIL } from "../constants/productConstant"
 
-axios.defaults.baseURL = process.env.API_URL
+axios.defaults.baseURL = process.env.REACT_APP_API_URL
 
 export const saveShippingDetails = (details) => (dispatch) => {
     dispatch({ type: SAVE_SHIPPING_DETAILS, payload: details })

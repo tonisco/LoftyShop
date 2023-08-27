@@ -1,7 +1,7 @@
 import axios from "axios"
 import { ADD_TO_CART, REMOVE_FROM_CART } from "../constants/CartConstant"
 
-axios.defaults.baseURL = process.env.API_URL
+axios.defaults.baseURL = process.env.REACT_APP_API_URL
 
 export const addToCart = (qty, id) => async (dispatch, getState) => {
     const {

@@ -6,7 +6,7 @@ import {
 import axios from "axios"
 import { USER_LOGIN_SUCCESS } from "../constants/userConstants"
 
-axios.defaults.baseURL = process.env.API_URL
+axios.defaults.baseURL = process.env.REACT_APP_API_URL
 
 export const vendorRegister = (contactInfo) => async (dispatch, getState) => {
     try {
